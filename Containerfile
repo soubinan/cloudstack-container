@@ -5,7 +5,8 @@ LABEL maintainer="https://github.com/soubinan"
 COPY ./cloudstack.repo /etc/yum.repos.d/cloudstack.repo
 
 RUN yum update -y && yum upgrade -y && \
-    yum install cloudstack-management hostname -y && \
+    yum clean all -y
+RUN yum install cloudstack-management hostname -y && \
     yum clean all -y
 RUN yum install nfs-utils -y && \
     yum clean all -y
