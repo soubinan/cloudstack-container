@@ -1,0 +1,59 @@
+version: '3'
+services:
+  cloudstack:
+    image: localhost/cloudstack:server-latest
+    hostname: management.cloudstack.local
+    restart: unless-stopped
+    ports:
+      - 8080:8080
+      - 8443:8443
+      - 8250:8250
+      - 9091:9090
+    depends_on:
+      - mysql
+    cap_add:
+      - SYS_ADMIN
+      - SYS_RESOURCE
+      - DAC_READ_SEARCH
+      - IPC_LOCK
+    volumes:
+      - ./cloudstack-init.env:/etc/default/cloudstack-init:Z
+      - cs-config:/etc/cloudstack:Z
+      - cs-data:/var/cloudstack:Z
+    logging: &default_logging
+      driver: "json-file"
+      options:
+        max-size: "1M"
+        max-file: "10"
+    networks:
+      - frontnet
+      - dbnet
+
+  mysql:
+    image: docker.io/library/mysql:8.0-debian
+    restart: unless-stopped
+    expose:
+      - 3306
+    volumes:
+      - ./cloudstack.cnf:/etc/mysql/conf.d/cloudstack.cnf:Z
+      - mysql-data:/var/lib/mysql:Z
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    logging:
+      <<: *default_logging
+    networks:
+      - dbnet
+
+volumes:
+  cs-config:
+    driver: local
+  cs-data:
+    driver: local
+  mysql-data:
+    driver: local
+
+networks:
+  frontnet:
+    external: true
+  dbnet:
+    external: true
