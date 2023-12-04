@@ -6,9 +6,9 @@ COPY ./cloudstack.repo /etc/yum.repos.d/cloudstack.repo
 
 RUN yum update -y && yum upgrade -y && \
     yum install cloudstack-management hostname -y && \
-    yum clean all
+    yum clean all -y
 RUN yum install nfs-utils -y && \
-    yum clean all
+    yum clean all -y
 RUN wget https://download.cloudstack.org/tools/vhd-util -O /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/vhd-util
 
 COPY ./cloudstack-init.env /etc/default/cloudstack-init
