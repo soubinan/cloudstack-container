@@ -1,7 +1,7 @@
 version: '3'
 services:
   cloudstack:
-    image: localhost/cloudstack:server-latest
+    image: localhost/cloudstack-mgt:latest
     hostname: management.cloudstack.local
     restart: unless-stopped
     ports:
