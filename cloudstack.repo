@@ -1,5 +1,5 @@
-[cloudstack]
-name=cloudstack
+[Cloudstack]
+name=Cloudstack
 baseurl=http://download.cloudstack.org/rhel/$releasever/4.18/
 enabled=1
 gpgcheck=0

@@ -58,7 +58,6 @@ jobs:
         uses: docker/build-push-action@v5.1.0
         with:
           context: "."
-          platforms: linux/amd64,linux/arm64
           file: "./Containerfile"
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
