@@ -1,6 +1,0 @@
-[AppStream]
-name=AppStream
-baseurl=https://download.rockylinux.org/pub/rocky/$releasever/AppStream/x86_64/os/
-enabled=1
-sslverify=0
-gpgcheck=0

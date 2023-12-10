@@ -1,5 +1,5 @@
 [Cloudstack]
-name=Cloudstack
+name=Apache Cloudstack 4.18 for x86_64
 baseurl=http://download.cloudstack.org/rhel/$releasever/4.18/
 enabled=1
 gpgcheck=0

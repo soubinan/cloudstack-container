@@ -3,16 +3,14 @@ FROM docker.io/redhat/ubi8-init:latest
 LABEL maintainer="https://github.com/soubinan"
 
 COPY ./cloudstack.repo /etc/yum.repos.d/cloudstack.repo
-COPY ./appstream.repo /etc/yum.repos.d/appstream.repo
-COPY ./baseos.repo /etc/yum.repos.d/baseos.repo
+COPY ./redhat.repo /etc/yum.repos.d/redhat.repo
+# COPY ./rocky.repo /etc/yum.repos.d/rocky.repo
 
 RUN yum clean all && \
     yum update -y && \
     yum upgrade --refresh -y && \
     yum clean all
-RUN yum install cloudstack-management -y && \
-    yum clean all
-RUN yum install hostname -y && \
+RUN yum install cloudstack-management hostname -y && \
     yum clean all
 RUN wget https://download.cloudstack.org/tools/vhd-util -O /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/vhd-util
 

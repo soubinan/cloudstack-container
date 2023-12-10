@@ -1,6 +1,0 @@
-[BaseOS]
-name=BaseOS
-baseurl=https://download.rockylinux.org/pub/rocky/$releasever/BaseOS/x86_64/os/
-enabled=1
-sslverify=0
-gpgcheck=0

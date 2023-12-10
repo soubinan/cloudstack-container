@@ -1,0 +1,13 @@
+[BaseOS]
+name=Rocky Linux 8 for x86_64 - BaseOS
+baseurl=https://download.rockylinux.org/pub/rocky/$releasever/BaseOS/x86_64/os/
+enabled=1
+sslverify=0
+gpgcheck=0
+
+[AppStream]
+name=Rocky Linux 8 for x86_64 - AppStream
+baseurl=https://download.rockylinux.org/pub/rocky/$releasever/AppStream/x86_64/os/
+enabled=1
+sslverify=0
+gpgcheck=0
