@@ -3,8 +3,7 @@ FROM docker.io/redhat/ubi8-init:latest
 LABEL maintainer="https://github.com/soubinan"
 
 COPY ./cloudstack.repo /etc/yum.repos.d/cloudstack.repo
-COPY ./redhat.repo /etc/yum.repos.d/redhat.repo
-# COPY ./rocky.repo /etc/yum.repos.d/rocky.repo
+COPY ./rocky.repo /etc/yum.repos.d/rocky.repo
 
 RUN yum clean all && \
     yum update -y && \
