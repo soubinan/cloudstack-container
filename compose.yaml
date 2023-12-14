@@ -18,8 +18,8 @@ services:
       - IPC_LOCK
     volumes:
       - ./cloudstack-init.env:/etc/default/cloudstack-init:Z
-      # - cs-config:/etc/cloudstack:Z
-      # - cs-data:/var/cloudstack:Z
+      - cs-config:/etc/cloudstack:Z
+      - cs-data:/var/cloudstack:Z
     logging: &default_logging
       driver: "json-file"
       options:
@@ -29,24 +29,20 @@ services:
   mysql:
     image: docker.io/library/mysql:8.0-debian
     restart: unless-stopped
-    ports:
-      - 3306:3306
     expose:
       - 3306
     volumes:
       - ./cloudstack.cnf:/etc/mysql/conf.d/cloudstack.cnf:Z
-      # - mysql-data:/var/lib/mysql:Z
+      - mysql-data:/var/lib/mysql:Z
     environment:
       - MYSQL_ROOT_PASSWORD=root
     logging:
       <<: *default_logging
 
-# To be uncommented if you want to persist your data
-#
-# volumes:
-#   cs-config:
-#     driver: local
-#   cs-data:
-#     driver: local
-#   mysql-data:
-#     driver: local
+volumes:
+  cs-config:
+    driver: local
+  cs-data:
+    driver: local
+  mysql-data:
+    driver: local

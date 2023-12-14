@@ -8,8 +8,7 @@ COPY ./rocky.repo /etc/yum.repos.d/rocky.repo
 RUN yum clean all && \
     yum update -y && \
     yum upgrade --refresh -y && \
-    yum clean all
-RUN yum install cloudstack-management hostname -y && \
+    yum install cloudstack-management hostname -y && \
     yum clean all
 RUN wget https://download.cloudstack.org/tools/vhd-util -O /usr/share/cloudstack-common/scripts/vm/hypervisor/xenserver/vhd-util
 

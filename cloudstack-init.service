@@ -1,17 +1,15 @@
 [Unit]
 Description=Cloudstack Setup Initialization
 After=network.target
+ConditionPathExists=!/etc/default/.cloudstack-provisionned__
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
 EnvironmentFile=/etc/default/cloudstack-init
-ExecStart=/usr/bin/cloudstack-setup-databases ${DB_CS_USER}:${DB_CS_PASSWD}@${DB_HOST} --deploy-as=${DB_ADM_USER}:${DB_ADM_PASSWD} -e ${ENCRYPTION_TYPE} -m ${MGT_SERVER_KEY} -k ${DB_KEY}
+ExecStart=/usr/bin/cloudstack-setup-databases ${DB_CS_USER}:${DB_CS_PASSWD}@${DB_HOST} --schema-only -e ${ENCRYPTION_TYPE} -m ${MGT_SERVER_KEY} -k ${DB_KEY}
 ExecStart=/usr/bin/cloudstack-setup-management
-
-StandardOutput=syslog
-StandardError=syslog
-SyslogIdentifier=cloudstack
+ExecStart=/usr/bin/touch /etc/default/.cloudstack-provisionned__
 
 [Install]
 WantedBy=multi-user.target
