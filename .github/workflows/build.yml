@@ -41,7 +41,7 @@ jobs:
             org.opencontainers.image.licenses=CC-BY-NC
       - name: Install cosign
         if: github.event_name == 'release'
-        uses: sigstore/cosign-installer@v3.2.0
+        uses: sigstore/cosign-installer@v3.3.0
         with:
           cosign-release: main
       - name: Set up Docker Buildx
