@@ -10,6 +10,8 @@ EnvironmentFile=/etc/default/cloudstack-init
 ExecStart=/usr/bin/cloudstack-setup-databases ${DB_CS_USER}:${DB_CS_PASSWD}@${DB_HOST} --schema-only -e ${ENCRYPTION_TYPE} -m ${MGT_SERVER_KEY} -k ${DB_KEY}
 ExecStart=/usr/bin/cloudstack-setup-management
 ExecStart=/usr/bin/touch /var/cloudstack/.cloudstack-provisionned__
+StandardOutput=journal+console
+StandardError=journal+console
 
 [Install]
 WantedBy=multi-user.target
